@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class OrderItem extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'order_id',
+        'product_id',
+        'product_name',
+        'product_sku',
+        'qty',
+        'price',
+        'subtotal',
+    ];
+
+    protected $casts = [
+        'price' => 'decimal:2',
+        'subtotal' => 'decimal:2',
+    ];
+
+    /**
+     * Relasi ke order
+     */
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    /**
+     * Relasi ke product
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+}
