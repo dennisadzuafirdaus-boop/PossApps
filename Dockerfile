@@ -6,15 +6,26 @@ RUN apt-get update && apt-get install -y \
     zip \
     curl \
     libzip-dev \
+    libicu-dev \
     && docker-php-ext-install zip pdo pdo_mysql
 
+# Install Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
+
+# Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
 COPY . .
 
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
+
+# Install Node dependencies & build Vite assets
+RUN npm install
+RUN npm run build
 
 EXPOSE 10000
 
