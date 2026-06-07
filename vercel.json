@@ -26,9 +26,9 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
         "DB_CONNECTION": "mysql",
-        "DB_HOST": "4gg.h.filess.io",
-        "DB_PORT": "3306",
-        "DB_DATABASE": "db2024_stormtorn",
-        "DB_USERNAME": "db2024_stormtorn"
+        "DB_HOST": "f1-8a4.h.filess.io",
+        "DB_PORT": "61032",
+        "DB_DATABASE": "PossApps_songsnake",
+        "DB_USERNAME": "PossApps_songsnake"
     }
 }
